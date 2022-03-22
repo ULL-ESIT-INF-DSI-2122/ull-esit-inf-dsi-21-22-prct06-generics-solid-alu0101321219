@@ -1,9 +1,13 @@
 /**
- * Tipo empleado para definir las estadísticas de un contendiente.
+ * Alias de tipo objeto empleado para definir las estadísticas de un contendiente.
  * Estas son 'ataque', 'defensa', 'velocidad' y 'vida' (hp).
  */
-export type Statistics = [['attack', number], ['defense', number],
-['speed', number], ['hp', number]];
+export type Statistics = {
+  attack: number;
+  defense: number;
+  speed: number;
+  hp: number;
+}
 
 /**
  * Define una clase abstracta empleada para representar un contendiente
@@ -19,16 +23,48 @@ export abstract class Fighter {
    * @param type Tipo del contendiente.
    * @param statistics Vector de estadísticas del contendiente.
    */
-  constructor(public readonly name: string, public readonly weight: number,
-    public readonly height: number, public readonly type: string,
+  constructor(private readonly name: string, private readonly weight: number,
+    private readonly height: number, private readonly type: string,
     private readonly statistics: Statistics) {}
+
+  /**
+   * Devuelve el nombre del contendiente
+   * @returns Cadena con el nombre del contendiente.
+   */
+  getName(): string {
+    return this.name;
+  }
+
+  /**
+   * Devuelve el peso del contendiente
+   * @returns Nº que representa el peso del contendiente.
+   */
+  getWeight(): number {
+    return this.weight;
+  }
+
+  /**
+   * Devuelve la altura del contendiente
+   * @returns Nº que representa la altura del contendiente.
+   */
+  getHeight(): number {
+    return this.height;
+  }
+
+  /**
+   * Devuelve el tipo del contendiente
+   * @returns Nº que representa el tipo del contendiente.
+   */
+  getType(): string {
+    return this.type;
+  }
 
   /**
    * Devuelve el poder de ataque del contendiente.
    * @returns Nº que representa el poder de ataque del contendiente.
    */
   getAttack(): number {
-    return this.statistics[0][1];
+    return this.statistics.attack;
   }
 
   /**
@@ -36,7 +72,7 @@ export abstract class Fighter {
    * @returns Nº que representa el poder de defensa del contendiente.
    */
   getDefense(): number {
-    return this.statistics[1][1];
+    return this.statistics.defense;
   }
 
   /**
@@ -44,7 +80,7 @@ export abstract class Fighter {
    * @returns Nº que representa la velocidad del contendiente.
    */
   getSpeed(): number {
-    return this.statistics[2][1];
+    return this.statistics.speed;
   }
 
   /**
@@ -52,6 +88,13 @@ export abstract class Fighter {
    * @returns Nº que representa los puntos de vida del contendiente.
    */
   getHP(): number {
-    return this.statistics[3][1];
+    return this.statistics.hp;
   }
+
+  /**
+   * Método abstracto que devuelve la 'catchingPhrase'
+   * de un contendiente.
+   * @returns Cadena con la 'catching phrase' del contendiente
+   */
+  abstract catchingPhrase(): string;
 }

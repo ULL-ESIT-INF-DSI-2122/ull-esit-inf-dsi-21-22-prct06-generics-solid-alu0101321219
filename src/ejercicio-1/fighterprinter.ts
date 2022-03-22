@@ -1,18 +1,11 @@
 import {Fighter} from './fighter';
-
-/**
- * Interfaz empleada para forzar la existencia de un método
- * de impresión por pantalla.
- */
-export interface Printable {
-  print(): void;
-}
+import {Printable} from './interfaces';
 
 /**
  * Permite imprimir por pantalla las características de un objeto
  * de la clase 'Fighter'.
  */
-export class FighterPrinter implements Printable {
+export abstract class FighterPrinter implements Printable {
   /**
    * Inicializa un objeto de la clase `FighterPrinter`.
    * @param fighter Contendiente.
@@ -24,8 +17,8 @@ export class FighterPrinter implements Printable {
     * contendiente (nombre, peso, altura, tipo y estadísticas).
     */
   print(): void {
-    console.log(`${this.fighter.name}: weight = ${this.fighter.weight},` +
-    ` height = ${this.fighter.height}, type = ${this.fighter.type},` +
+    console.log(`${this.fighter.getName()}: weight = ${this.fighter.getWeight()},` +
+    ` height = ${this.fighter.getHeight()}, type = ${this.fighter.getType()},` +
     ` attack = ${this.fighter.getAttack()},` +
     ` defense = ${this.fighter.getDefense()},` +
     ` speed = ${this.fighter.getDefense()}, hp = ${this.fighter.getHP()}`);

@@ -18,8 +18,24 @@ export class Pokemon extends Fighter {
     * @param type Tipo del pokemon.
     * @param statistics Estadísticas del pokémon: ataque, defensa, velocidad y vida (hp)
     */
-  constructor(public readonly id: number, name: string, weight: number, height: number, type: pokemonType,
+  constructor(private readonly id: number, name: string, weight: number, height: number, type: pokemonType,
       statistics: Statistics) {
     super(name, weight, height, type, statistics);
+  }
+
+  /**
+   * Devuelve el id (identificador único) del pokémon
+   * @returns Número que representa el identificador del pokémon
+   */
+  getId(): number {
+    return this.id;
+  }
+
+  /**
+   * Devuelve la 'catching phrase' de un pokémon.
+   * @returns Cadena con la 'catching phrase' del pokémon.
+   */
+  catchingPhrase(): string {
+    return `${this.getName()}, I choose you!`;
   }
 }

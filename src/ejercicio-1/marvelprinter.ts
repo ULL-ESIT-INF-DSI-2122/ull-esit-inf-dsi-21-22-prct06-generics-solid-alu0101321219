@@ -1,5 +1,6 @@
-import {Printable, FighterPrinter} from './fighterprinter';
+import {FighterPrinter} from './fighterprinter';
 import {Marvel} from './marvel';
+import {Printable} from './interfaces';
 
 /**
  * Permite imprimir por pantalla las características de un objeto de la clase
@@ -19,13 +20,13 @@ export class MarvelPrinter extends FighterPrinter implements Printable {
    * de marvel, incluyendo con ello la información de un contendiente.
    */
   print(): void {
-    console.log(`Universo: Marvel`);
+    console.log(`Universe: Marvel`);
     super.print();
-    const mask: string = this.marvelPJ.haveMask? 'yes' : 'no';
-    console.log(`Other information: real name = ${this.marvelPJ.realName}, have mask? ${mask}`);
+    const mask: string = this.marvelPJ.getHasMask()? 'yes' : 'no';
+    console.log(`Other information: real name = ${this.marvelPJ.getRealName()}, have mask? ${mask}`);
   }
 }
 
-const spiderman = new Marvel("Spiderman", 80, 1.78, '???', [['attack', 55], ['defense', 40], ['speed', 90], ['hp', 35]], 'Peter Parker', true);
+const spiderman = new Marvel("Spiderman", 80, 1.78, 'avenger', {attack: 55, defense: 40, speed: 90, hp: 35}, true);
 const spidermanPrint = new MarvelPrinter(spiderman);
 spidermanPrint.print();
