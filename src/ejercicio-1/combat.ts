@@ -1,4 +1,4 @@
-import {Fighter} from "./fighter";
+import {Fighter} from "./fighter/fighter";
 
 class Combat<T extends Fighter, U extends Fighter> {
   constructor(private fighter1: T, private fighter2: U) {}

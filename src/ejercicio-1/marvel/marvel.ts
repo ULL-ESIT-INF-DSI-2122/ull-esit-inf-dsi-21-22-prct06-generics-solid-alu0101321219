@@ -1,4 +1,4 @@
-import {Fighter, Statistics} from "./fighter";
+import {Fighter, Statistics} from "../fighter/fighter";
 /**
  * Define los diferentes tipos que puede tener un personaje de Marvel.
  * @type

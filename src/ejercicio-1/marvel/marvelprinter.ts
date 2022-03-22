@@ -1,6 +1,6 @@
-import {FighterPrinter} from './fighterprinter';
+import {FighterPrinter} from '../fighter/fighterprinter';
 import {Marvel} from './marvel';
-import {Printable} from './interfaces';
+import {Printable} from '../interfaces';
 
 /**
  * Permite imprimir por pantalla las características de un objeto de la clase
