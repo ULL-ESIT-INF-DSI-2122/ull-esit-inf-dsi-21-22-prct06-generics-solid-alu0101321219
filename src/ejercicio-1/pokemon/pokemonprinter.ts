@@ -26,6 +26,6 @@ export class PokemonPrinter extends FighterPrinter implements Printable {
   }
 }
 
-const pikachu = new Pokemon(0, "Pikachu", 30, 30, 'electric', {attack: 55, defense: 40, speed: 90, hp: 35});
+const pikachu = new Pokemon("Pikachu", 30, 30, 'electric', {attack: 55, defense: 40, speed: 90, hp: 35}, 0);
 const pikachuprinter = new PokemonPrinter(pikachu);
 pikachuprinter.print();

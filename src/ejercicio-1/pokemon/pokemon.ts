@@ -3,7 +3,7 @@ import {Fighter, Statistics} from "../fighter/fighter";
  * Define los diferentes tipos que puede tener un Pokémon.
  * @type
  */
-export type pokemonType = "fire" | "grass" | "water" | "electric";
+export type PokemonType = "fire" | "grass" | "water" | "electric";
 
 /**
   * Representa un Pokémon.
@@ -11,15 +11,15 @@ export type pokemonType = "fire" | "grass" | "water" | "electric";
 export class Pokemon extends Fighter {
   /**
     * Inicializa un objeto de la clase Pokemon.
-    * @param id Identificador numérico único del pokémon.
     * @param name Nombre del pokémon.
     * @param weight Peso del pokémon.
     * @param height Altura del pokémon.
     * @param type Tipo del pokemon.
-    * @param statistics Estadísticas del pokémon: ataque, defensa, velocidad y vida (hp)
+    * @param statistics Estadísticas del pokémon.
+    * @param id Identificador numérico único del pokémon.
     */
-  constructor(private readonly id: number, name: string, weight: number, height: number, type: pokemonType,
-      statistics: Statistics) {
+  constructor(name: string, weight: number, height: number, type: PokemonType,
+      statistics: Statistics, private readonly id: number) {
     super(name, weight, height, type, statistics);
   }
 
@@ -29,13 +29,5 @@ export class Pokemon extends Fighter {
    */
   getId(): number {
     return this.id;
-  }
-
-  /**
-   * Devuelve la 'catching phrase' de un pokémon.
-   * @returns Cadena con la 'catching phrase' del pokémon.
-   */
-  catchingPhrase(): string {
-    return `${this.getName()}, I choose you!`;
   }
 }

@@ -90,11 +90,4 @@ export abstract class Fighter {
   getHP(): number {
     return this.statistics.hp;
   }
-
-  /**
-   * Método abstracto que devuelve la 'catchingPhrase'
-   * de un contendiente.
-   * @returns Cadena con la 'catching phrase' del contendiente
-   */
-  abstract catchingPhrase(): string;
 }

@@ -9,7 +9,7 @@ import {Printable} from '../interfaces';
 export class MarvelPrinter extends FighterPrinter implements Printable {
   /**
    * Inicializa un objeto de la clase `MarvelPrinter`.
-   * @param pokemon Pokémon.
+   * @param marvelPJ Personaje de Marvel.
    */
   constructor(private marvelPJ: Marvel) {
     super(marvelPJ);

@@ -3,7 +3,7 @@ import {Fighter, Statistics} from "../fighter/fighter";
  * Define los diferentes tipos que puede tener un personaje de Marvel.
  * @type
  */
-export type marvelType = "avenger" | "thanos supporter" | "guardian of the galaxy";
+export type MarvelType = "avenger" | "thanos supporter" | "guardian of the galaxy";
 
 /**
   * Representa un personaje de Marvel.
@@ -20,7 +20,7 @@ export class Marvel extends Fighter {
    * @param realName Nombre real del personaje. Si no se define es su nombre
    *        de personaje.
    */
-  constructor(name: string, weight: number, height: number, type: marvelType,
+  constructor(name: string, weight: number, height: number, type: MarvelType,
       statistics: Statistics, private hasMask: boolean, private readonly realName?: string) {
     super(name, weight, height, type, statistics);
     if (!realName) this.realName = this.getName();
@@ -48,13 +48,5 @@ export class Marvel extends Fighter {
    */
   getRealName(): string | undefined {
     return this.realName;
-  }
-
-  /**
-   * Devuelve la 'catching phrase' de un personaje de Marvel.
-   * @returns Cadena con la 'catching phrase' del personaje de Marvel.
-   */
-  catchingPhrase(): string {
-    return `I am ${this.getName()}`;
   }
 }
