@@ -6,6 +6,35 @@ import {Fighter, Statistics} from "../fighter/fighter";
 export type PokemonType = "fire" | "grass" | "water" | "electric";
 
 /**
+ * Define la efectividad del tipo fuego en el caso
+ * de realizar un ataque contra los demás tipos.
+ * @enum
+ */
+export enum fire {fire = 0.5, grass = 2, water = 0.5, electric = 1};
+
+/**
+  * Define la efectividad del tipo hierba en el caso
+  * de realizar un ataque contra los demás tipos.
+  * @enum
+  */
+export enum grass {fire = 0.5, grass = 0.5, water = 2, electric = 1};
+
+/**
+  * Define la efectividad del tipo agua en el caso
+  * de realizar un ataque contra los demás tipos.
+  * @enum
+  */
+export enum water {fire = 2, grass = 0.5, water = 0.5, electric = 0.5};
+
+/**
+  * Define la efectividad del tipo eléctrico en el caso
+  * de realizar un ataque contra los demás tipos.
+  * @enum
+  */
+export enum electric {fire = 1, grass = 1, water = 2, electric = 0.5};
+
+
+/**
   * Representa un Pokémon.
   */
 export class Pokemon extends Fighter {
