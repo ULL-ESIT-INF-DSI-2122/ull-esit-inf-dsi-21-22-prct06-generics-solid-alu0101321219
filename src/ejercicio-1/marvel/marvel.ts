@@ -5,10 +5,6 @@ import {Fighter, Statistics} from "../fighter/fighter";
  */
 export type MarvelType = "avenger" | "thanosSupporter" | "guardianOfTheGalaxy";
 
-export enum avenger {avenger = 0.5, thanosSupporter = 2, guardianOfTheGalaxy = 0.5};
-export enum thanosSupporter {avenger = 1, thanosSupporter = 0.5, guardianOfTheGalaxy = 2};
-export enum guardianOfTheGalaxy {avenger = 1, thanosSupporter = 0.5, guardianOfTheGalaxy = 0.5}
-
 /**
   * Representa un personaje de Marvel.
   */

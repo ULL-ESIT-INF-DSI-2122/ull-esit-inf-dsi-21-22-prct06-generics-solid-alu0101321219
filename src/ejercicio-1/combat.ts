@@ -1,6 +1,4 @@
 import {Fighter} from "./fighter/fighter";
-import {fire, water, grass, electric, PokemonType} from "./pokemon/pokemon";
-import {avenger, thanosSupporter, guardianOfTheGalaxy, MarvelType} from "./marvel/marvel";
 
 /**
  * Clase empleada para realizar la simulación de un combate
@@ -29,7 +27,7 @@ class Combat {
   setFighter2(fighter: Fighter): void {
     this.fighter2 = fighter;
   }
-
+/*
   private getPokemonDamage(fighter: (1 | 2)): number {
     if (fighter == 1) {
       switch (this.fighter1.getType()) {
@@ -79,4 +77,5 @@ class Combat {
     }
     return -1;
   }
+  */
 }
