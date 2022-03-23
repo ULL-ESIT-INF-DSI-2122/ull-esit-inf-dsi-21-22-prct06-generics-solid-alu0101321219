@@ -17,10 +17,10 @@ export enum thanosSupporter {avenger = 1, thanosSupporter = 0.5, guardianOfTheGa
  * Define la efectividad de un personaje tipo 'guardianOfTheGalaxy' en caso de
  * realizar un ataque contra los demás tipos.
  */
-export enum guardianOfTheGalaxy {avenger = 1, thanosSupporter = 0.5, guardianOfTheGalaxy = 0.5}
+export enum guardianOfTheGalaxy {avenger = 1, thanosSupporter = 0.5, guardianOfTheGalaxy = 0.5};
 
 /**
- * Permite calcula el daño que un personaje de Marvel haría a otro
+ * Permite calcular el daño que un personaje de Marvel haría a otro
  * en caso de un combate.
  */
 export class MarvelFight extends FighterFight {
