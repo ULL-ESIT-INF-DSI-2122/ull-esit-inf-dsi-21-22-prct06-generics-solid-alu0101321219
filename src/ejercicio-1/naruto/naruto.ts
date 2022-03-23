@@ -3,13 +3,7 @@ import {Fighter, Statistics} from "../fighter/fighter";
  * Define los diferentes tipos que puede tener un Pokémon.
  * @type
  */
-export type NarutoType = "uzumaki" | " uchija" | "hyuga" | "senju";
-
-export enum uzumaki {uzumaki = 0.5, uchija = 0.5, hyuga = 2, senju = 1};
-export enum uchija {uzumaki = 2, uchija = 0.5, hyuga = 1, senju = 0.5};
-export enum hyuga {uzumaki = 0.5, uchija = 1, hyuga = 0.5, senju = 2};
-export enum senju {uzumaki = 1, uchija = 2, hyuga = 0.5, senju = 0.5};
-
+export type NarutoType = "uzumaki" | "uchija" | "hyuga" | "senju";
 
 /**
   * Representa un personaje de Naruto.

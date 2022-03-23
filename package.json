@@ -8,6 +8,7 @@
     "ej1-pokemonprinter": "tsc-watch --onSuccess \"node dist/ejercicio-1/pokemonprinter.js\"",
     "ej1-marvelprinter": "tsc-watch --onSuccess \"node dist/ejercicio-1/marvelprinter.js\"",
     "ej1-marvelfight": "tsc-watch --onSuccess \"node dist/ejercicio-1/marvel/marvelfight.js\"",
+    "ej1-narutofight": "tsc-watch --onSuccess \"node dist/ejercicio-1/naruto/narutofight.js\"",
     "mod-searchablecollection": "tsc-watch --onSuccess \"node dist/modificacion/searchablecollection.js\"",
     "doc": "typedoc",
     "test": "mocha",
