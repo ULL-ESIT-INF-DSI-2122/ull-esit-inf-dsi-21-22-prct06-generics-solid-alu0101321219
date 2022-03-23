@@ -1,6 +1,10 @@
 {
   "entryPoints": [
-      "./src/index.ts"
+      "./src/modificacion/collectable.ts",
+      "./src/modificacion/numericsearchablecollection.ts",
+      "./src/modificacion/searchable.ts",
+      "./src/modificacion/searchablecollection.ts",
+      "./src/modificacion/stringsearchablecollection.ts"
   ],
   "out": "./typedoc"
 }
