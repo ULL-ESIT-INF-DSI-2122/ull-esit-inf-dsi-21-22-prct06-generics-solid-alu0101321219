@@ -1,5 +1,5 @@
 import {Pokemon, PokemonType} from "./pokemon";
-import {FighterFight} from "../fighter/fighterFight";
+import {FighterFight} from "../universe/fighterFight";
 
 /**
  * Define la efectividad del tipo fuego en el caso

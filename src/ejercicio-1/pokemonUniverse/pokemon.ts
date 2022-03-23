@@ -1,4 +1,4 @@
-import {Fighter, Statistics} from "../fighter/fighter";
+import {Fighter, Statistics} from "../universe/fighter";
 /**
  * Define los diferentes tipos que puede tener un Pokémon.
  * @type

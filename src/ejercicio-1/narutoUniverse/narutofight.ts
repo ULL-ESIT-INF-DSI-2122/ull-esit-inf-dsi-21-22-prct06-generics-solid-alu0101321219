@@ -1,5 +1,5 @@
 import {Naruto, NarutoType} from './naruto';
-import {FighterFight} from '../fighter/fighterFight';
+import {FighterFight} from '../universe/fighterFight';
 
 /**
  * Define la efectividad de un personaje del clan 'uzumaki' en caso

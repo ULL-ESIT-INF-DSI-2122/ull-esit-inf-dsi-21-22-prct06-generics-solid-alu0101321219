@@ -1,4 +1,4 @@
-import {FighterCatchingPhrase} from '../fighter/fightercathingphrase';
+import {FighterCatchingPhrase} from '../universe/fightercathingphrase';
 import {Marvel} from './marvel';
 import {CatchingPhrase} from '../interfaces';
 

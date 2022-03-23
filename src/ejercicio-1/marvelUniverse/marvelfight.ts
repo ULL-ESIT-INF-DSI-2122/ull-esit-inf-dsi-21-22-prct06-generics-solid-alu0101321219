@@ -1,5 +1,5 @@
 import {Marvel, MarvelType} from "./marvel";
-import {FighterFight} from "../fighter/fighterFight";
+import {FighterFight} from "../universe/fighterFight";
 
 /**
  * Define la efectividad de un personaje tipo 'avenger' en caso

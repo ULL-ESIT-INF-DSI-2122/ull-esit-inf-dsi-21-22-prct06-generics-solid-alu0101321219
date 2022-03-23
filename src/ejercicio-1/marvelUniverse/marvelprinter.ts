@@ -1,4 +1,4 @@
-import {FighterPrinter} from '../fighter/fighterprinter';
+import {FighterPrinter} from '../universe/fighterprinter';
 import {Marvel} from './marvel';
 import {Printable} from '../interfaces';
 
