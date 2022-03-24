@@ -27,7 +27,7 @@ export class Naruto extends Fighter {
    * Establece el nivel de un personaje de Naruto
    * @param chackra Nivel de chakra a establecer.
    */
-  setChackra(chackra: number): void {
+  public setChackra(chackra: number): void {
     this.chakra = chackra;
   }
 
@@ -35,7 +35,7 @@ export class Naruto extends Fighter {
    * Devuelve el nivel de chackra de un personaje de Naruto
    * @returns Número que representa el nivel de Chakra de un personaje de Naruto.
    */
-  getChakra(): number {
+  public getChakra(): number {
     return this.chakra;
   }
 }

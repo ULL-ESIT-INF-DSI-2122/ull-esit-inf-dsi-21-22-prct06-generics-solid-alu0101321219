@@ -39,7 +39,7 @@ export class MarvelFight extends FighterFight {
    * @returns Daño que causaría el personaje de marvel invocante al que se
    * le introduce por parámetro.
    */
-  fight(otherMarvelPJ: Marvel): number {
+  public fight(otherMarvelPJ: Marvel): number {
     switch (this.marvelPJ.getType()) {
       case 'avenger':
         return 50 * (this.marvelPJ.getAttack() / otherMarvelPJ.getDefense()) * avenger[otherMarvelPJ.getType() as MarvelType];
@@ -51,7 +51,3 @@ export class MarvelFight extends FighterFight {
     return -1;
   }
 }
-
-const spiderman = new Marvel("Spiderman", 80, 1.78, 'avenger', {attack: 55, defense: 40, speed: 90, hp: 35}, true);
-const marvelFight = new MarvelFight(spiderman);
-console.log(marvelFight.fight(spiderman));

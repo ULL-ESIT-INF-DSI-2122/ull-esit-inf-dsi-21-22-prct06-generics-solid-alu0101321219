@@ -16,5 +16,5 @@ export abstract class FighterCatchingPhrase implements CatchingPhrase {
    * de un contendiente.
    * @returns Cadena con la 'catching phrase' del contendiente
    */
-  abstract catchingPhrase(): string;
+  public abstract catchingPhrase(): string;
 }

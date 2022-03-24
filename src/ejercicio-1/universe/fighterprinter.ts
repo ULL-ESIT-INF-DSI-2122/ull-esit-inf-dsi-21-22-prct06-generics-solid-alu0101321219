@@ -16,7 +16,7 @@ export abstract class FighterPrinter implements Printable {
     * Imprime por pantalla de forma formateada la información de un
     * contendiente (nombre, peso, altura, tipo y estadísticas).
     */
-  print(): void {
+  public print(): void {
     console.log(`${this.fighter.getName()}: weight = ${this.fighter.getWeight()},` +
     ` height = ${this.fighter.getHeight()}, type = ${this.fighter.getType()},` +
     ` attack = ${this.fighter.getAttack()},` +

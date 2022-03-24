@@ -16,5 +16,5 @@ export abstract class FighterFight {
    * @param otherFighter Contendiente rival
    * @returns Daño que el contendiente haría a otro contendiente.
    */
-  abstract fight(otherFighter: Fighter): number;
+  public abstract fight(otherFighter: Fighter): number;
 }

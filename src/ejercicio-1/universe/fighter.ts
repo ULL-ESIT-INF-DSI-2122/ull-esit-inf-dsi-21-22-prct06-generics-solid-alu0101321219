@@ -31,7 +31,7 @@ export abstract class Fighter {
    * Devuelve el nombre del contendiente
    * @returns Cadena con el nombre del contendiente.
    */
-  getName(): string {
+  public getName(): string {
     return this.name;
   }
 
@@ -39,7 +39,7 @@ export abstract class Fighter {
    * Devuelve el peso del contendiente
    * @returns Nº que representa el peso del contendiente.
    */
-  getWeight(): number {
+  public getWeight(): number {
     return this.weight;
   }
 
@@ -47,7 +47,7 @@ export abstract class Fighter {
    * Devuelve la altura del contendiente
    * @returns Nº que representa la altura del contendiente.
    */
-  getHeight(): number {
+  public getHeight(): number {
     return this.height;
   }
 
@@ -55,7 +55,7 @@ export abstract class Fighter {
    * Devuelve el tipo del contendiente
    * @returns Nº que representa el tipo del contendiente.
    */
-  getType(): string {
+  public getType(): string {
     return this.type;
   }
 
@@ -63,7 +63,7 @@ export abstract class Fighter {
    * Devuelve el poder de ataque del contendiente.
    * @returns Nº que representa el poder de ataque del contendiente.
    */
-  getAttack(): number {
+  public getAttack(): number {
     return this.statistics.attack;
   }
 
@@ -71,7 +71,7 @@ export abstract class Fighter {
    * Devuelve el poder de defensa del contendiente.
    * @returns Nº que representa el poder de defensa del contendiente.
    */
-  getDefense(): number {
+  public getDefense(): number {
     return this.statistics.defense;
   }
 
@@ -79,7 +79,7 @@ export abstract class Fighter {
    * Devuelve la velocidad del contendiente.
    * @returns Nº que representa la velocidad del contendiente.
    */
-  getSpeed(): number {
+  public getSpeed(): number {
     return this.statistics.speed;
   }
 
@@ -87,7 +87,7 @@ export abstract class Fighter {
    * Devuelve la vida del contendiente.
    * @returns Nº que representa los puntos de vida del contendiente.
    */
-  getHP(): number {
+  public getHP(): number {
     return this.statistics.hp;
   }
 }

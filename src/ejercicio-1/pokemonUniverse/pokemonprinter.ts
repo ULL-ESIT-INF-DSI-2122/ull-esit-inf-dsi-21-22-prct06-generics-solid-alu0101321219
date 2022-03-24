@@ -1,12 +1,11 @@
 import {FighterPrinter} from '../universe/fighterprinter';
 import {Pokemon} from './pokemon';
-import {Printable} from '../interfaces';
 
 /**
  * Permite imprimir por pantalla las características de un objeto de la clase
  * Pokémon.
  */
-export class PokemonPrinter extends FighterPrinter implements Printable {
+export class PokemonPrinter extends FighterPrinter {
   /**
    * Inicializa un objeto de la clase `PokemonPrinter`.
    * @param pokemon Pokémon.
@@ -19,13 +18,9 @@ export class PokemonPrinter extends FighterPrinter implements Printable {
    * Imprime por pantalla de manera formateada la información de un pokémon,
    * incluyendo con ello la información de un contendiente.
    */
-  print(): void {
+  public print(): void {
     console.log(`Universe: Pokémon`);
     super.print();
     console.log(`Other information: id = ${this.pokemon.getId()}`);
   }
 }
-
-const pikachu = new Pokemon("Pikachu", 30, 30, 'electric', {attack: 55, defense: 40, speed: 90, hp: 35}, 0);
-const pikachuprinter = new PokemonPrinter(pikachu);
-pikachuprinter.print();

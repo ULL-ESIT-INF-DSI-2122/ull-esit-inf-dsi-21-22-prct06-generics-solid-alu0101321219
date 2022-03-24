@@ -59,7 +59,7 @@ export class Combat {
    * @param fighter Determina que luchador realiza el ataque (si el 1 o el 2)
    * @returns Daño que el contendiente elegido realizaría al oponente.
    */
-  public fight(fighter: (1 | 2)): number {
+  private fight(fighter: (1 | 2)): number {
     if (fighter == 1) {
       switch (this.fighter1.constructor.name) {
         case 'Pokemon':
@@ -183,8 +183,3 @@ export class Combat {
     return winner;
   }
 }
-
-const pikachu = new Pokemon('Pikachu', 40, 30, 'electric', {attack: 50, defense: 60, speed: 120, hp: 70}, 0);
-const combat = new Combat(pikachu, pikachu);
-console.log(pikachu.constructor.name);
-console.log(combat.fight(1));

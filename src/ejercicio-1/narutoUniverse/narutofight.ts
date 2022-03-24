@@ -45,7 +45,7 @@ export class NarutoFight extends FighterFight {
    * @returns Daño causado por nuestro personaje de Naruto al personaje de Naruto
    * rival.
    */
-  fight(otherNarutoPJ: Naruto): number {
+  public fight(otherNarutoPJ: Naruto): number {
     switch (this.narutoPJ.getType()) {
       case 'uzumaki':
         return 50 * (this.narutoPJ.getAttack() / otherNarutoPJ.getDefense()) * uzumaki[otherNarutoPJ.getType() as NarutoType];

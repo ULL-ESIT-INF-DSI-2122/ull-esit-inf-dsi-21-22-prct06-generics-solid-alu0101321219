@@ -21,16 +21,16 @@ export class Marvel extends Fighter {
    *        de personaje.
    */
   constructor(name: string, weight: number, height: number, type: MarvelType,
-      statistics: Statistics, private hasMask: boolean, private readonly realName?: string) {
+      statistics: Statistics, private hasMask: boolean, private realName?: string) {
     super(name, weight, height, type, statistics);
-    if (!realName) this.realName = this.getName();
+    if (!realName) this.setRealName(this.getName());
   }
 
   /**
    * Establece si un personaje de Marvel es o no enmascarado.
    * @param hasMask 'True' si tiene máscara, 'False' en caso contrario.
    */
-  setHasMask(hasMask: boolean): void {
+  public setHasMask(hasMask: boolean): void {
     this.hasMask = hasMask;
   }
 
@@ -38,15 +38,23 @@ export class Marvel extends Fighter {
    * Comprueba si un personaje es o no enmascarado.
    * @returns 'True' si lleva máscara.
    */
-  getHasMask(): boolean {
+  public getHasMask(): boolean {
     return this.hasMask;
+  }
+
+  /**
+   * Esteblece el nombre real de un personaje de Marvel.
+   * @param realName Nombre real.
+   */
+  public setRealName(realName: string): void {
+    this.realName = realName;
   }
 
   /**
    * Devuelve el nombre real de un personaje de marvel.
    * @returns Nombre real del personaje de marvel
    */
-  getRealName(): string | undefined {
+  public getRealName(): string | undefined {
     return this.realName;
   }
 }

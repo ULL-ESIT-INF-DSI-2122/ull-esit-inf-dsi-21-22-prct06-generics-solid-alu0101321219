@@ -1,11 +1,10 @@
 import {FighterCatchingPhrase} from '../universe/fightercathingphrase';
 import {Naruto} from './naruto';
-import {CatchingPhrase} from '../interfaces';
 
 /**
  * Permite obtener la 'catching phrase' de un personaje de Naruto.
  */
-export class NarutoCatchingPhrase extends FighterCatchingPhrase implements CatchingPhrase {
+export class NarutoCatchingPhrase extends FighterCatchingPhrase {
   /**
    * Inicializa un objeto de la clase `NarutoCatchingPhrase`.
    * @param narutoPJ Naruto.
@@ -18,7 +17,7 @@ export class NarutoCatchingPhrase extends FighterCatchingPhrase implements Catch
    * Devuelve la 'catching phrase' de un personaje de Naruto.
    * @returns Cadena con la 'catching phrase' de un personaje de Naruto.
    */
-  catchingPhrase(): string {
+  public catchingPhrase(): string {
     return `Because that's my ninja way!`;
   }
 }

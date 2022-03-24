@@ -2,28 +2,28 @@ import {Pokemon, PokemonType} from "./pokemon";
 import {FighterFight} from "../universe/fighterFight";
 
 /**
- * Define la efectividad del tipo fuego en el caso
+ * Define la efectividad de un Pokémon de tipo fuego en el caso
  * de realizar un ataque contra los demás tipos.
  * @enum
  */
 export enum fire {fire = 0.5, grass = 2, water = 0.5, electric = 1};
 
 /**
-   * Define la efectividad del tipo hierba en el caso
+   * Define la efectividad de un Pokémon de tipo hierba en el caso
    * de realizar un ataque contra los demás tipos.
    * @enum
    */
 export enum grass {fire = 0.5, grass = 0.5, water = 2, electric = 1};
 
 /**
-   * Define la efectividad del tipo agua en el caso
+   * Define la efectividad de un Pokémon de tipo agua en el caso
    * de realizar un ataque contra los demás tipos.
    * @enum
    */
 export enum water {fire = 2, grass = 0.5, water = 0.5, electric = 0.5};
 
 /**
-   * Define la efectividad del tipo eléctrico en el caso
+   * Define la efectividad de un Pokémon de tipo eléctrico en el caso
    * de realizar un ataque contra los demás tipos.
    * @enum
    */
@@ -48,7 +48,7 @@ export class PokemonFight extends FighterFight {
    * @param otherPokemon Pokemon rival o contricante.
    * @returns Daño causado al pokémon rival por parte del pokémon atacante.
    */
-  fight(otherPokemon: Pokemon): number {
+  public fight(otherPokemon: Pokemon): number {
     switch (this.pokemon.getType()) {
       case 'fire':
         return 50 * (this.pokemon.getAttack() / otherPokemon.getDefense()) * fire[otherPokemon.getType() as PokemonType];

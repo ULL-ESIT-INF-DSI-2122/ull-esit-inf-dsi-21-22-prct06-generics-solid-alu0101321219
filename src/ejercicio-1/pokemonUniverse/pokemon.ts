@@ -27,7 +27,7 @@ export class Pokemon extends Fighter {
    * Devuelve el id (identificador único) del pokémon
    * @returns Número que representa el identificador del pokémon
    */
-  getId(): number {
+  public getId(): number {
     return this.id;
   }
 }
