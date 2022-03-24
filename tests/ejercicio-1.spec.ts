@@ -17,6 +17,7 @@ import {FighterCatchingPhrase} from '../src/ejercicio-1/universe/fightercathingp
 import {FighterFight} from '../src/ejercicio-1/universe/fighterFight';
 import {FighterPrinter} from '../src/ejercicio-1/universe/fighterprinter';
 import {Combat} from './../src/ejercicio-1/combat';
+import {Pokedex} from './../src/ejercicio-1/pokedex';
 
 
 describe('Ejercicio 1 - El combate definitivo', () => {
@@ -533,5 +534,41 @@ describe('Ejercicio 1 - El combate definitivo', () => {
     });
   });
   describe("Pokedex", () => {
+    const myPokedex = new Pokedex(pikachu);
+    it('Existe una clase llamada Pokedex', () => {
+      expect(Pokedex != undefined).to.be.true;
+    });
+
+    it('Se instancia correctamente un objeto', () => {
+      expect(myPokedex instanceof Pokedex).to.be.true;
+    });
+
+    it("Pokedex cuenta con atributo para almacenar contendientes", () => {
+      expect('fighters' in myPokedex).to.be.true;
+    });
+
+    it("Pokedex cuenta con un método 'isRegistered'", () => {
+      expect('isRegistered' in myPokedex).to.be.true;
+    });
+
+    it("myPokedex.isRegistered(pikachu) == true", () => {
+      expect(myPokedex.isRegistered(pikachu)).to.be.true;
+    });
+
+    it("myPokedex.isRegistered(spiderman) == false", () => {
+      expect(myPokedex.isRegistered(spiderman)).to.be.false;
+    });
+
+    it('Pokedex cuenta con un método "addFighter"', () => {
+      expect('addFighter' in myPokedex).to.be.true;
+    });
+
+    it('Pokedex cuenta con un método "numberOfRegisteredFighters"', () => {
+      expect('numberOfRegisteredFighters' in myPokedex).to.be.true;
+    });
+
+    it("myPokedex.numberOfRegisteredFighters == 1", () => {
+      expect(myPokedex.numberOfRegisteredFighters()).to.be.equal(1);
+    });
   });
 });
