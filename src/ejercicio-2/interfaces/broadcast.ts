@@ -39,7 +39,7 @@ export interface Broadcast {
   /**
    * Año de publicación de la emisión.
    */
-  year: string;
+  year: number;
 
   /**
    * Puntuación de la determinada emisión, si es que ha sido puntuada.
