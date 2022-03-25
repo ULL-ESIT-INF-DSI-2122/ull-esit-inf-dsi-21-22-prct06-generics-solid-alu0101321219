@@ -75,4 +75,14 @@ export class FilmCollection extends BasicStreamableCollection<Film> {
     return this.getCollection().filter((film) =>
       film.actorNames.includes(name) || film.characterNames.includes(name));
   }
+
+  /**
+   * Busca un conjunto de películas que tengan en común una duración en minutos
+   * específica indicada por parámetro.
+   * @param minutes Duración en minutos de una película.
+   * @returns Conjunto de películas.
+   */
+  public searchByDuration(minutes: number): Film[] {
+    return this.getCollection().filter((film) => film.durationInMinutes == minutes);
+  }
 }
