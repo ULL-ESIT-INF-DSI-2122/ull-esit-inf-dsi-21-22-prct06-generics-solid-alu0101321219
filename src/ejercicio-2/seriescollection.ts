@@ -61,7 +61,7 @@ export class SeriesCollection extends BasicStreamableCollection<Series> {
    * @param puntuation Puntuación.
    * @returns Conjunto de series.
    */
-  public searchByPuntuation(puntuation: Puntuation | undefined): Series[] {
+  public searchByPuntuation(puntuation: Puntuation): Series[] {
     return this.getCollection().filter((serie) => serie.puntuation == puntuation);
   }
 
