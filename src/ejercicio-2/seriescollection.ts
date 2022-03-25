@@ -8,7 +8,7 @@ import {Series} from './interfaces/series';
 
 export class SeriesCollection extends BasicStreamableCollection<Series> {
   /**
-   * Inicializa un objeto de la clase 'BasicStreamableCollection'. Por defecto,
+   * Inicializa un objeto de la clase 'SeriesCollection'. Por defecto,
    * el conjunto de series almacenadas es vacío.
    */
   constructor() {
