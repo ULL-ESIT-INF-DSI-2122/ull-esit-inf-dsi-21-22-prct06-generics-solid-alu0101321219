@@ -75,4 +75,24 @@ export class DocumentaryCollection extends BasicStreamableCollection<Documentary
     return this.getCollection().filter((documentary) =>
       documentary.castNames.includes(name));
   }
+
+  /**
+   * Busca un conjunto de documentales que tengan en común un tópico que se
+   * especifica por parámetro.
+   * @param topic Tópico de un documental.
+   * @returns Conjunto de documentales.
+   */
+  public searchByTopic(topic: string): Documentary[] {
+    return this.getCollection().filter((documentary) => documentary.topic == topic);
+  }
+
+  /**
+   * Busca un conjunto de documentales que tengan en común el mismo numero de
+   * temporadas que se especifica por parámetro.
+   * @param numberOfSeasons Número de temporadas.
+   * @returns Conjunto de series.
+   */
+  public searchByNumberOfSeasons(numberOfSeasons: number): Documentary[] {
+    return this.getCollection().filter((documentary) => documentary.numberOfSeasons == numberOfSeasons);
+  }
 }
