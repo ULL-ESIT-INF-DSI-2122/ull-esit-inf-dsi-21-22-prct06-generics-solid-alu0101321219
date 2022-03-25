@@ -51,7 +51,7 @@ export class DocumentaryCollection extends BasicStreamableCollection<Documentary
    * @param year Año de publicación de una .
    * @returns Conjunto de documentales.
    */
-  public searchbyYear(year: number): Documentary[] {
+  public searchByYear(year: number): Documentary[] {
     return this.getCollection().filter((documentary) => documentary.year == year);
   }
 
