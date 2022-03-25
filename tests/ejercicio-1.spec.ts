@@ -32,7 +32,7 @@ describe('Ejercicio 1 - El combate definitivo', () => {
       });
 
       it('new Pokemon("Pikachu", 30, 40, "electric", {attack: 50, defense: 50, speed: 120, hp: 80}, 35) es una isntancia de una clase hija de Fighter', () => {
-        expect(pikachu instanceof Fighter);
+        expect(pikachu instanceof Fighter).to.be.true;
       });
 
       it('La clase Fighter cuenta con un atributo "name"', () => {
