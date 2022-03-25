@@ -24,7 +24,7 @@ export interface Broadcast {
   /**
    * Descripción de la emisión.
    */
-  description: string;
+  description?: string;
 
   /**
    * Director/creador de la emisión.
