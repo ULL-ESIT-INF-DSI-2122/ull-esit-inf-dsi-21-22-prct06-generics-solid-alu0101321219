@@ -1,5 +1,5 @@
-import {Streamable} from "./streamable";
-import {Category, Puntuation} from "./broadcast";
+import {Streamable} from "./interfaces/streamable";
+import {Category, Puntuation} from "./interfaces/broadcast";
 
 /**
  * Clase abstracta utilizada para gestionar una colección de emisiones.
