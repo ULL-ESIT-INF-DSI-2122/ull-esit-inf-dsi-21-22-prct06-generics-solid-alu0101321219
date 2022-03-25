@@ -51,7 +51,7 @@ export class SeriesCollection extends BasicStreamableCollection<Series> {
    * @param year Año de publicación de una serie.
    * @returns Conjunto de series.
    */
-  public searchbyYear(year: number): Series[] {
+  public searchByYear(year: number): Series[] {
     return this.getCollection().filter((serie) => serie.year == year);
   }
 

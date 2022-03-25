@@ -92,7 +92,7 @@ export abstract class BasicStreamableCollection<T> implements Streamable<T> {
    * coincida con el introducido por parámetro.
    * @param year Año de publicación.
    */
-  public abstract searchbyYear(year: number): T[];
+  public abstract searchByYear(year: number): T[];
 
   /**
    * Busca un determinado conjunto de emisiones cuya puntuación coincida

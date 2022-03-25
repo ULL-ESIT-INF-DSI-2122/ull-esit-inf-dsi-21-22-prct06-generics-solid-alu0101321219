@@ -51,7 +51,7 @@ export class FilmCollection extends BasicStreamableCollection<Film> {
    * @param year Año de publicación de una película.
    * @returns Conjunto de películas.
    */
-  public searchbyYear(year: number): Film[] {
+  public searchByYear(year: number): Film[] {
     return this.getCollection().filter((film) => film.year == year);
   }
 

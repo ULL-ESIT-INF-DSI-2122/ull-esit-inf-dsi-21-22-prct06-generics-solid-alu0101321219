@@ -33,7 +33,7 @@ export interface SearchableStreamable<T> {
     * @param year Año de publicación de una emisión.
     * @returns Subconjunto de emisiones con dicho año de publicación.
     */
-   searchbyYear(year: number): T[];
+   searchByYear(year: number): T[];
 
    /**
     * Permite buscar un conjunto de emisiones concreta a partir de una
