@@ -75,4 +75,14 @@ export class SeriesCollection extends BasicStreamableCollection<Series> {
     return this.getCollection().filter((serie) =>
       serie.actorNames.includes(name) || serie.characterNames.includes(name));
   }
+
+  /**
+   * Busca un conjunto de series que tengan en común el mismo numero de
+   * temporadas que se especifica por parámetro.
+   * @param numberOfSeasons Número de temporadas.
+   * @returns Conjunto de series.
+   */
+  public searchByNumberOfSeasons(numberOfSeasons: number): Series[] {
+    return this.getCollection().filter((serie) => serie.numberOfSeasons == numberOfSeasons);
+  }
 }
