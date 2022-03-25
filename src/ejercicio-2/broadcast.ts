@@ -1,4 +1,9 @@
 /**
+ * Puntuación en estrellas que puede tener una determinada emisión.
+ */
+export type Puntuation = 1 | 2 | 3 | 4 | 5;
+
+/**
  * Recoge las características que tendría una emisión cualquiera de una
  * plataforma de video en streaming.
  */
@@ -27,4 +32,9 @@ export interface Broadcast {
    * Año de publicación de la emisión.
    */
   year: string;
+
+  /**
+   * Puntuación de la determinada emisión.
+   */
+  puntuation: Puntuation;
 }
