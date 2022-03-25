@@ -34,7 +34,7 @@ export interface Broadcast {
   year: string;
 
   /**
-   * Puntuación de la determinada emisión.
+   * Puntuación de la determinada emisión, si es que ha sido puntuada.
    */
-  puntuation: Puntuation;
+  puntuation?: Puntuation;
 }
