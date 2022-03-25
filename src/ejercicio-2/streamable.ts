@@ -1,12 +1,43 @@
+export interface SearchableStreamable<T> {
+  /**
+   * Permite buscar un conjunto de emisiones concretas a través de su nombre.
+   * @param name Nombre de la emision a buscar.
+   * @returns Subconjunto de emisiones que poseen ese nombre.
+   */
+   searchByName(name: string): T[];
+
+   /**
+    * Permite buscar un conjunto de emisiones concreta a partir de su año de
+    * publicación.
+    * @param year Año de publicación de una emisión.
+    * @returns Subconjunto de emisiones con dicho año de publicación.
+    */
+   searchbyYear(year: number): T[];
+
+   /**
+    * Permite buscar un conjunto de emisiones concreta a partir de una categoría
+    * especificada por parámetro.
+    * @param category Categoría a especificar.
+    * @returns Subconjunto de emisiones que cumplen dicha categoría.
+    */
+   searchByCategory(category: string): T[];
+}
+
 /**
  * Especifica las propiedades y métodos con los que debería contar
  * una colección de emisiones concreta (ej: colección de series)
  */
-export interface Streamable<T> {
+export interface Streamable<T> extends SearchableStreamable<T> {
   /**
    * Atributo para almacenar la colección de emisiones.
    */
   collection: T[];
+
+  /**
+   * Devuelve la colleción de emisiones
+   * @return Colección completa de emisiones.
+   */
+  getCollection(): T[];
 
   /**
    * Comprueba si una determinada emisión se encuentra ya en la colección.
@@ -30,27 +61,4 @@ export interface Streamable<T> {
    * de que no existiera dentro del conjunto y por tanto no pudiese ser eliminada.
    */
   removeBroadCast(broadcast: T): boolean;
-
-  /**
-   * Permite buscar un conjunto de emisiones concretas a través de su nombre.
-   * @param name Nombre de la emision a buscar.
-   * @returns Subconjunto de emisiones que poseen ese nombre.
-   */
-  searchByName(name: string): T[];
-
-  /**
-   * Permite buscar un conjunto de emisiones concreta a partir de su año de
-   * publicación.
-   * @param year Año de publicación de una emisión.
-   * @returns Subconjunto de emisiones con dicho año de publicación.
-   */
-  searchbyYear(year: number): T[];
-
-  /**
-   * Permite buscar un conjunto de emisiones concreta a partir de una categoría
-   * especificada por parámetro.
-   * @param category Categoría a especificar.
-   * @returns Subconjunto de emisiones que cumplen dicha categoría.
-   */
-  searchByCategory(category: string): T[];
 }
