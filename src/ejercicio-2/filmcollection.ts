@@ -8,11 +8,11 @@ import {Film} from './interfaces/film';
 
 export class FilmCollection extends BasicStreamableCollection<Film> {
   /**
-   * Inicializa un objeto de la clase 'FilmCollection'. Por defecto,
-   * el conjunto de películas almacenadas es vacío.
+   * Inicializa un objeto de la clase 'FilmCollection'. Permite crearlo
+   * con un conjunto de películas inicial.
    */
-  constructor() {
-    super();
+  constructor(...films: Film[]) {
+    super(...films);
   }
 
   /**

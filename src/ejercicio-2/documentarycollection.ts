@@ -8,11 +8,11 @@ import {Documentary} from './interfaces/documentary';
 
 export class DocumentaryCollection extends BasicStreamableCollection<Documentary> {
   /**
-   * Inicializa un objeto de la clase 'DocumentaryCollection'. Por defecto,
-   * el conjunto de documentales almacenado es vacío.
+   * Inicializa un objeto de la clase 'DocumentaryCollection'. Permite crearlo
+   * con un conjunto de documentales inicial.
    */
-  constructor() {
-    super();
+  constructor(...documentaries: Documentary[]) {
+    super(...documentaries);
   }
 
   /**
