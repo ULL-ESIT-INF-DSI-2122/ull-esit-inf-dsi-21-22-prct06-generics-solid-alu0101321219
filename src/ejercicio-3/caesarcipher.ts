@@ -19,7 +19,7 @@ export class CaesarCipher extends Cipher<string> {
    * repetidos del mismo.
    */
   private formatAlphabet(): void {
-    this.setAlphabet([...new Set(this.getAlphabet())].join(''));
+    super.setAlphabet([...new Set(this.getAlphabet())].join(''));
   }
 
   /**
@@ -73,8 +73,3 @@ export class CaesarCipher extends Cipher<string> {
     return decodedMessage;
   }
 }
-
-const mycifrado = new CaesarCipher('abcdefghijklmnopqrstuvwxyz', 'clave');
-console.log(mycifrado.getAlphabet());
-console.log(mycifrado.encode('Tengo una mala noticia, que no fue de casualidad.'));
-console.log(mycifrado.decode('Tqoct gow pmmw qauehlm, vxq jt rva gq yfvgbhngme.'));
