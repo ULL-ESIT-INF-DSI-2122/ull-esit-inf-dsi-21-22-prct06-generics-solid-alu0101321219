@@ -31,6 +31,9 @@
       "./src/ejercicio-2/filmcollection.ts",
       "./src/ejercicio-2/seriescollection.ts",
 
+      "./src/ejercicio-3/cipher.ts",
+      "./src/ejercicio-3/caesarcipher.ts",
+
       "./src/modificacion/collectable.ts",
       "./src/modificacion/numericsearchablecollection.ts",
       "./src/modificacion/searchable.ts",
