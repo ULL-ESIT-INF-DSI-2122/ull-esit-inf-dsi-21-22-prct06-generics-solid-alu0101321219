@@ -12,6 +12,7 @@
     "ej1-combat": "tsc-watch --onSuccess \"node dist/ejercicio-1/combat.js\"",
     "ej2-series": "tsc-watch --onSuccess \"node dist/ejercicio-2/seriescollection.js\"",
     "ej2-documentary": "tsc-watch --onSuccess \"node dist/ejercicio-2/documentarycollection.js\"",
+    "ej3-cifrado": "tsc-watch --onSuccess \"node dist/ejercicio-3/cifrado.js\"",
     "mod-searchablecollection": "tsc-watch --onSuccess \"node dist/modificacion/searchablecollection.js\"",
     "doc": "typedoc",
     "test": "mocha",
