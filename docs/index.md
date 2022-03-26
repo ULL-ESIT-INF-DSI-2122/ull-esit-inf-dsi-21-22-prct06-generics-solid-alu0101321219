@@ -310,5 +310,134 @@ Imagine que tiene que diseñar el modelo de datos de una plataforma de vídeo en
 - Trate de aplicar los principios SOLID. Preste especial atención al diseño de la interfaz Streamable. Si cree que debe dividirla en interfaces genéricas más pequeñas porque su diseño inicial es muy complejo, hágalo, con el objetivo de cumplir con el cuarto principio SOLID Interface segregation.
 
 ## Resolución
+### Resumen
+Para la realización de este ejercicio contamos con: la __interfaz `streamable`__ que extiende de __otra interfaz con métodos de búsqueda llamada `searchableStreamable`__, interfaces para representar los **documentales**, __series__ y __peliculas__ que extienden de otra interfaz genérica que representa las __emisiones__ y un conjunto de clases para representar __colecciones__ de __documentales__, __series__ y __películas__ que extienden de una clase de __emisiones genérica__.
 
+### Interfaz Streamable
+La interfaz Streamable presenta métodos para __gestionar colecciones de emisiones__ el entre ellos:
+- Un método para devolver la colección.
+```typescript
+  getCollection(): T[];
+```
+- UN método para comprobar si una emisión ya está registrada.
+```typescript
+  isRegistered(broadcast: T): boolean
+```
+- Un método para añadir una emisión al conjunto. Nótese que esta devuelve un booleano que indica si se ha añadido correctamente o si ya se encontraba dento de la lista y por tanto no se ha podido añadir.
+```typescript
+  addBroadcast(broadcast: T): boolean;
+```
+- Un método para eliminar una emisión de la lista. De nuevo se comprueba con una variable booleana si esa emisión se eliminó correctamente o en cambio no se pudo eliminar porque no se encontraba dentro de la colección.
+```typescript
+  removeBroadCast(broadcast: T): boolean;
+```
+
+### Interfaz SearchableStreamable
+Con el objetivo de implementar __métodos de búsqueda para las colecciones__ se creo esta interfaz. Los métodos que implementa la misma deberían estar recogidosd entro de la interfaz anterior, por este motivo esta interfaz es utilizada para expandir la anterior. La idea es que respetemos los principios SOLID, tal y como se nos plantea en el enunciado. Sus métodos son búsquedas por un determinado parámetro:
+- Por nombre de la emisión
+```typescript
+searchByName(name: string): T[];
+```
+- Por director de la emisión
+```typescript
+   searchByDirector(name: string): T[];
+```
+- Por categoría de la emisión
+```typescript
+    searchByCategory(category: Category): T[];
+```
+- Por año de publicación de la emisión
+```typescript
+   searchByYear(year: number): T[];
+```
+- Por puntuación de la emisión.
+```typescript
+   searchByPuntuation(puntuation: Puntuation): T[];
+```
+- Por reparto o personaje de la emisión.
+```typescript
+   searchByCast(name: string): T[];
+```
+
+### Interfaz Broadcast y derivadas
+Ya que vamos a trabajar con __peliculas__, __series__ y __documentales__ deberemos definir una estructura para cada una de estos. Asi pues, hemos creado una interfaz de cada uno. No obstante, como hay características que se repiten fue conveniente crear una __interfaz genéria `Broadcast`__ que las una. Con esto estaremos aplicando a su vez los principios SOLID tan importantes en esta práctica. Nuestra interfaz `Broadcast` tiene la siguiente forma:
+```typescript
+export interface Broadcast {
+  name: string;
+  description?: string;
+  director: string;
+  categories: Category[];
+  year: number;
+  puntuation?: Puntuation;
+}
+```
+Como podemos ver, toda emisión cuenta con un nombre, una descripción, un director, unas categorias, un año de lanzamiento y una puntuación. Nótese que las __categorías__ son de un tipo específicamente creado para ellas. Este es:
+```typescript
+export type Category = 'action' | 'animation' | 'anime' | 'adventure' | 'war' |
+  'science fiction' | 'comedy' | 'crime' | 'drama' | 'family' | 'fantasy' |
+  'history' | 'for children' | 'mistery' | 'music' | 'romance' |
+  'superheroes' | 'suspense' | 'terror' | 'sports';
+```
+A partir de esta creamos interfaces para representar una __serie__, una __película__ y un __documental__. Por ejemplo, para el caso de serie tenemos:
+```typescript
+export interface Series extends Broadcast{
+   characterNames: string[];
+   actorNames: string[];
+   numberOfSeasons: number;
+   seasonNumberOfChapters(season: number): number;
+}
+```
+### Clase BasicStreamableCollection
+Esta clase, tal y como se dice en el enunciado del ejercicio, es una __clase genérica abstracta que implementa la interfaz `Streamable`__. Así pues esta tiene como único atributo un vector donde almacenar colleciones de tipo T.
+```typescript
+  private collection: T[] = [];
+```
+De forma muy parecida a la implementación de la clase Pokedex del ejercicio anterior implementa __todos los métodos de la interfaz__. Nótse que aquellos que son __métodos de búsqueda se definen como abstractos__.
+```typescript
+  public abstract searchByName(name: string): T[];
+  public abstract searchByDirector(name: string): T[];
+  public abstract searchByCategory(category: Category): T[];
+  public abstract searchByYear(year: number): T[];
+  public abstract searchByPuntuation(puntuation: Puntuation): T[];
+  public abstract searchByCast(name: string): T[];
+```
+### Clases hijas de BasicStreamaleCollection
+Ya tenemos todos los ingredientes para hacer las colecciones que en un principio se plantearon. Utilizando la __clase abstracta anterior__ y las __interfaces que definen nuestros objetos de la colección__.
+- Para la __cabecera__ de cada una de las clases definimos el tipo de objeto a utilizar. Asi pues, tenemos:
+```typescript
+export class DocumentaryCollection extends BasicStreamableCollection<Documentary> {}
+export class FilmCollection extends BasicStreamableCollection<Film> {}
+export class SeriesCollection extends BasicStreamableCollection<Series> {}
+```
+- En el __constructor__ le pasamos una variable tipo rest con la que pueda introducir las emisiones que inicialmente se deseen. En la colección de series, por ejemplo, se vería asi:
+```typescript
+constructor(...series: Series[]) {
+    super(...series);
+}
+```
+- Contamos con __métodos de búsqueda__ que no cambian en ninguna de las 3 clases, pero que se deben definir aquí para trabajar en la clase padre con un tipo genérico T. Estos son el método de búsqueda por nombre, director, categoría, año y puntuación. Todos utilizan la opción filter que nos ofrece javascript, la cual es muy cómoda para realizar búsquedas en vectores. Un ejemplo de estos es:
+```typescript
+public searchByName(name: string): Series[] {
+    return this.getCollection().filter((serie) => serie.name == name);
+  }
+```
+- Contamos con un __método de búsqueda__ cuya implementación es diferente en distintas clases. Este es el de búsqueda por casting que mientras que para series y películas se comparan los nombres de actores y personajes, para los documentales se comparan con el atributo que contiene los nombres de reparto. En el siguiente código podemos notar la diferencia:
+```typescript
+// Para la colección de series y peliculas
+public searchByCast(name: string): Series[] {
+    return this.getCollection().filter((serie) =>
+      serie.actorNames.includes(name) || serie.characterNames.includes(name));
+  }
+// Para la colección de documentales
+public searchByCast(name: string): Documentary[] {
+    return this.getCollection().filter((documentary) =>
+      documentary.castNames.includes(name));
+  }
+```
+- Por último cabe destacar que también se han realizado __métodos propios de la colección__, relacionados con las búsquedas por atributos propios del objeto como el tópico en el caso de los documentales.
+```typescript
+public searchByTopic(topic: string): Documentary[] {
+    return this.getCollection().filter((documentary) => documentary.topic == topic);
+  }
+```
 # Ejercicio 3 - El cifrado indescifrable
