@@ -40,7 +40,7 @@ Por otro lado, contamos con las clases `Combat` y `Pokedex` que se especifican e
 #### Interfaces implementadas
 Se han creado a su vez 2 interfaces: una interfaz `Printable` que cuenta con un método de impresión por pantalla y una interfaz `CatchingPhrase` que cuenta con un método que devuelve una cadena con una supuesta catching phrase. Estan han sido implementadas en las clases abstractas mencionadas más arriba y se han creado únicamente con el objetivo de seguir estructurando código.
 
-### Clase `Fighter`
+### Clase Fighter
 La clase abstracta presenta los **mismos atributos que los que fueron desarrollados en la práctica 5 para la clase Pokemon**. Estos son: un nombre, un peso, una estatura, un tipo y unas estadisticas. Podemos ver los mismos en el constructor:
 ```typescript
 constructor(private readonly name: string, private readonly weight: number,
@@ -58,7 +58,7 @@ export type Statistics = {
 ```
 El resto de métodos que posee son **getters**, puesto que todos sus atributos son de lectura. Dado a que la funcionalidad principal de dicha clase es definir un luchador, no vimos necesario incluir más datos.
 
-### Derivadas de la clase `Fighter`
+### Derivadas de la clase Fighter
 Como ya hemos mencionado, para aplicar los principios SOLID hemos extendido la clase `Fighter` con **nuevas funcionalidades a través de subclases**. Dichas clases tienen en común su constructor, que básicamente reciben un objeto del tipo luchador.
 ```typescript
   constructor(private fighter: Fighter) {}
@@ -79,7 +79,7 @@ Este básicamente imprime cada uno de los atributos de la clase.
 - La clase `FighterFight` implementa un método para obtener el daño que el luchador invocante causaría a otro en caso de un ataque.
 Todos estos métodos (salvo el de impresión por pantalla) son **abstractos**, pues la idea es que se definan en sus clases hijos de distinta manera.
 
-### Hijas de la clase `Fighter` y de sus derivadas.
+### Hijas de la clase Fighter y de sus derivadas.
 Como hemos dicho anteriormente, **cada una de las clases abstractas anteriores tiene su propia implementación para cada uno de nuestros 3 universos**. Como los 3 casos son relativamente muy parecidos tomaremos de ejemplo el universo de Marvel.
 #### Hijas de la clase `Fighter`
 - Su __constructor__ llama a los elementos que se requieren en el padre y agrega 2 atributos más: uno que comprueba si un personaje lleva máscara y otro que almacena su nombre real.
@@ -137,7 +137,7 @@ Como podemos observar en el ejemplo de MarvelFight, **sólo podemos ejecutar est
 enum avenger {avenger = 0.5, thanosSupporter = 2, guardianOfTheGalaxy = 0.5};
 ```
 
-### Clase `Combat`
+### Clase Combat
 Como se comenta en el enunciado de la práctica la clase `Combat` puede hacer luchar a contendientes de **distintos universos**. Por lo tanto trabajaremos con la clase `Fighter` dentro de ella.
 - El **constructor** inicializas 2 atributos de tipo `Figher` que representan a nuestros luchadores.
 ```typescript
@@ -268,7 +268,7 @@ ublic start(printable: boolean = true): Fighter {
 3. El resto del bucle se basa en ir restandose vida consecutivamente por turnos hasta que esta llegue a un valor menor que cero.
 4. Por último se selecciona el ganador y se imprime, si es que se eligió el ganador. Nótese que para no imprimir vida con valores negativos esta se iguala a cero.
 
-### Clase `Pokedex`
+### Clase Pokedex
 La clase `Pokédex` no tiene variación ninguna que la de la práctica anterior, quitando el hecho de que ahora se almacenan `Fighter`'s  y no Pokemons.
 - El **constructor** permite introducir por parámetro un conjunto indeterminado de contendientes a través de un parámetro rest. Este emplea la función add para añadir, la cual comprueba que no se pasen contendientes repetidos.
 ```typescript
@@ -302,4 +302,13 @@ public numberOfRegisteredFighters(): number {
 ```
 
 # Ejercicio 2 - DSIflix
+## Enunciado
+Imagine que tiene que diseñar el modelo de datos de una plataforma de vídeo en streaming. A través del catálogo de dicha plataforma se puede acceder a películas, series y documentales:
+- Defina una interfaz genérica Streamable que trate de especificar propiedades y métodos con los que debería contar una colección de emisiones concreta como, por ejemplo, una colección de series. Por ejemplo, deberían definirse métodos de búsqueda en dicha interfaz, que permitan obtener listados en función de diferentes términos de búsqueda: por año o por nombre, entre otros.
+- Defina una clase abstracta genérica BasicStreamableCollection que implemente dicha interfaz genérica. En este punto, podrá particularizar algunas de las propiedades y métodos de la interfaz Streamable, aunque otros tendrán que permanecer como abstractos para ser definidos más abajo en la jerarquía de clases. Todo dependerá del diseño que haya llevado a cabo.
+- Tendrá que extender dicha clase abstracta para obtener subclases que modelen cada uno de los tres tipos de colecciones: series, películas y documentales.
+- Trate de aplicar los principios SOLID. Preste especial atención al diseño de la interfaz Streamable. Si cree que debe dividirla en interfaces genéricas más pequeñas porque su diseño inicial es muy complejo, hágalo, con el objetivo de cumplir con el cuarto principio SOLID Interface segregation.
+
+## Resolución
+
 # Ejercicio 3 - El cifrado indescifrable
