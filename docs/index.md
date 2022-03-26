@@ -541,3 +541,6 @@ public decode(message: string): string {
   }
 ```
 Nótese que para esto usamos el método __slice()__ que nos proporcionan los __strings__ de `javascript`. Esto se debe a que al restar podemos encontrarnos con índices negativos.
+
+# Referencias
+- [Práctica 6 - Clases e interfaces genéricas. Principios SOLID](https://ull-esit-inf-dsi-2122.github.io/prct06-generics-solid/)
