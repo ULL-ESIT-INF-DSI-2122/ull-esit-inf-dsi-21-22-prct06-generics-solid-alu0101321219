@@ -441,3 +441,103 @@ public searchByTopic(topic: string): Documentary[] {
   }
 ```
 # Ejercicio 3 - El cifrado indescifrable
+## Enunciado
+En el Cifrado César, cada letra de un alfabeto se desplaza cierto número de posiciones. Por ejemplo, suponiendo el alfabeto ABCDEFGHIJKLMNÑOPQRSTUVWXYZ, si fijamos un Cifrado César con desplazamiento d = 5, entonces, la letra A pasaría a ser la letra F, la letra B pasaría a ser la letra G, la letra Z pasaría a ser la letra E, y así sucesivamente.
+
+Existe otro tipo de cifrados donde un texto de entrada se encripta utilizando un conjunto de Cifrados César con desplazamientos variables basados en las letras de una palabra clave. El desplazamiento se obtiene aplicando Cifrado César a una letra del mensaje utilizando como desplazamiento la posición de la letra correspondiente de la clave dentro del alfabeto. Por ejemplo, suponiendo el mismo alfabeto anterior y la palabra clave CLAVE:
+```
+"HOLAESTOESUNAPRUEBA"
+"CLAVECLAVECLAVECLAV"
+```
+La letra H de la entrada se cifraría con un desplazamiento d = 3 (que correspondería a la letra K), dado que la letra C de la clave se encuentra en la posición d = 3 dentro del alfabeto. De un modo similar, la letra O de la entrada se cifraría con un desplazamiento d = 12 (que correspondería a la letra A), dado que la letra L de la clave se encuentra en la posición d = 12 del alfabeto, y así sucesivamente. Obsérvese que aunque la palabra clave sea más corta que el mensaje de entrada, dicha palabra clave debe repetirse hasta cubrir todo el mensaje de entrada. Por último, también tenga en cuenta que un carácter que no pertenezca al alfabeto se codificará como el mismo carácter.
+
+Cree una clase Cifrado que implemente las operaciones de codificación y decodificación ante un alfabeto y palabra clave arbitrarios, esto es, definidos por el usuario y que, además, pueden ser variables. Trate de aplicar los principios SOLID en su diseño.
+
+## Resolución
+Para resolver este ejercicio **implementando los principios SOLID** se han creado un total de __2 clases__. 
+### Clase Cipher
+Esta clase se emplea para __cifrar__ y __descifrar__ mensajes de un tipo genérico. Esta pensanda para representar la estructura general de los algoritmos de cifrado que requieren de un alfabeto y una clave para su funcionamiento.
+#### Sus atributos y constructor
+La clase cuenta únicamente con __2 atributos__: un __alfabeto__ y una __clave__. Esto son de un tipo genérico y se inicializan en el constructor como atributos privados.
+```typescript
+  constructor(private alphabet: T, private key: T) {}
+```
+Estos se pueden modificar y obtener a base de __getters__ y __setters__ también definidos dentro de la clase.
+
+#### Métodos de cifrado y descifrado
+Por último, la clase implementa __2 métodos abstractos__ para __cifrar__ y __descifrar__ mensajes de tipo __genérico__. La idea es que estos tengan sus propias definiciones dependiendo del algoritmo de cifrado que se implemente en sus clases hijas.
+```typescript
+  public abstract encode(message: T): T;
+  public abstract decode(message: T): T;
+```
+
+### Clase CaesarCipher
+Esta clase __hereda de la clase anterior__ para implementar un __cifrado en particular__, el __Cifrado César__. La principal particularidad con la que cuenta es que posee un __método de formateo del alfabeto__.
+```typescript
+private formatAlphabet(): void {
+    super.setAlphabet([...new Set(this.getAlphabet())].join(''));
+}
+```
+La utilidad de este es simplemente eliminar los caracteres repetidos que puedan ser introducidos por el usuario en nuestro alfabeto. Para ello la clase `Set` que nos permite definir un conjunto (donde no hay elementos repetidos).
+
+#### Constructor 
+A la hora de inicializarse se __instancian__ los valores para el __alfabeto__ y la __clave__ en el padre y se formatea el mismo alfabeto.
+```typescript
+constructor(alphabet: string, key: string) {
+    super(alphabet, key);
+    this.formatAlphabet();
+}
+```
+#### Metodo setAlphabet
+Puesto que __es necesario formatear el alfabeto cada vez que se introduce uno nuevo__ deberemos sobreescribir el método `setAlphabet` de la clase padre de la siguiente manera.
+```typescript
+public setAlphabet(alphabet: string): void {
+    super.setAlphabet(alphabet);
+    this.formatAlphabet();
+}
+```
+
+#### Método encode()
+Para __codificar un mensaje__ simplemente recorremos __cada letra del mensaje__ de manera que:
+- Si dicha letra o el elemento de la clave se encuentra dentro de nuestro alfabeto:
+  - Obtenemos tanto la posición del elemento `i` del mensaje como el valor del desplazmiento a aplicar (a través de la clave).
+  - Almacenamos en la variable resultado el elemento cuya posición tiene el mismo índice que la suma de los anteriores posiciones.
+- Si dicha letra o elemento de la clave NO se encuentra dentro de nuestro alfabeto no la alteramos (directamente la almacenamos en la variable resultante).
+```typescript 
+public encode(message: string): string {
+    let encodedMessage: string = '';
+    for (let i: number = 0; i < message.length; i++) {
+      if (this.getAlphabet().includes(message[i]) &&
+        this.getAlphabet().includes(this.getKey()[i % this.getKey().length])) {
+        const iMessagePosition: number = this.getAlphabet().indexOf(message[i]);
+        const move: number = this.getAlphabet().indexOf(this.getKey()[i % this.getKey().length]) + 1;
+        encodedMessage += this.getAlphabet()[(iMessagePosition + move) % this.getAlphabet().length];
+      } else {
+        encodedMessage += message[i];
+      }
+    }
+    return encodedMessage;
+}
+```
+Nótese que hacemos uso del __operador `%`__, que simboliza la operación __módulo__, con el objetivo repetir los elementos de la clave de forma cíclica en caso de que esta tenga menor tamaño que el mensaje introducido.
+
+#### Método decode()
+Para __decodificar un mensaje__ seguimos prácticamente los mismos pasos que para la __codificación__ (apartado anterior). La única differencia es que ahora deberemos __restar el desplazamiento__.
+```typescript
+public decode(message: string): string {
+    let decodedMessage: string = '';
+    for (let i: number = 0; i < message.length; i++) {
+      if (this.getAlphabet().includes(message[i]) &&
+        this.getAlphabet().includes(this.getKey()[i % this.getKey().length])) {
+        const iMessagePosition: number = this.getAlphabet().indexOf(message[i]);
+        const move: number = this.getAlphabet().indexOf(this.getKey()[i % this.getKey().length]) + 1;
+        const decodedPosition: number = (iMessagePosition - move) % this.getAlphabet().length;
+        decodedMessage += this.getAlphabet().slice(decodedPosition, decodedPosition + 1);
+      } else {
+        decodedMessage += message[i];
+      }
+    }
+    return decodedMessage;
+  }
+```
+Nótese que para esto usamos el método __slice()__ que nos proporcionan los __strings__ de `javascript`. Esto se debe a que al restar podemos encontrarnos con índices negativos.
