@@ -440,6 +440,7 @@ public searchByTopic(topic: string): Documentary[] {
     return this.getCollection().filter((documentary) => documentary.topic == topic);
   }
 ```
+
 # Ejercicio 3 - El cifrado indescifrable
 ## Enunciado
 En el Cifrado César, cada letra de un alfabeto se desplaza cierto número de posiciones. Por ejemplo, suponiendo el alfabeto ABCDEFGHIJKLMNÑOPQRSTUVWXYZ, si fijamos un Cifrado César con desplazamiento d = 5, entonces, la letra A pasaría a ser la letra F, la letra B pasaría a ser la letra G, la letra Z pasaría a ser la letra E, y así sucesivamente.
