@@ -16,7 +16,7 @@
     "mod-searchablecollection": "tsc-watch --onSuccess \"node dist/modificacion/searchablecollection.js\"",
     "doc": "typedoc",
     "test": "mocha",
-    "coverage": "nyc npm test"
+    "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls && rm -rf .nyc_output"
   },
   "repository": {
     "type": "git",

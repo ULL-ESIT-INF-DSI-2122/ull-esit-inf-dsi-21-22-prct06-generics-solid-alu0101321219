@@ -17,3 +17,6 @@ Este repositorio se ha diseñado de acorde a la [estructura básica de proyecto]
 - En la carpeta `./typedoc` podemos encontrar la documentación generada en código 'html' por la herramienta 'typedoc'.
 - En la carpeta `./src` podemos encontrar todo el código fuente de los distintos ejercicios.
 - En la carpeta `./tests` podemos encontrar el código de las pruebas unitarias de cada uno de dichos ejercicios.
+
+## Configuración de coveralls
+[![Coverage Status](https://coveralls.io/repos/github/ULL-ESIT-INF-DSI-2122/ull-esit-inf-dsi-21-22-prct06-generics-solid-alu0101321219/badge.svg?branch=main)](https://coveralls.io/github/ULL-ESIT-INF-DSI-2122/ull-esit-inf-dsi-21-22-prct06-generics-solid-alu0101321219?branch=main)
