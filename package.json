@@ -14,6 +14,7 @@
     "ej2-documentary": "tsc-watch --onSuccess \"node dist/ejercicio-2/documentarycollection.js\"",
     "ej3-cifrado": "tsc-watch --onSuccess \"node dist/ejercicio-3/cifrado.js\"",
     "mod-searchablecollection": "tsc-watch --onSuccess \"node dist/modificacion/searchablecollection.js\"",
+    "practica7": "tsc-watch --onSuccess \"node dist/practica7-ejercicios/randomnumber.js\"",
     "doc": "typedoc",
     "test": "mocha",
     "coverage": "nyc npm test && nyc report --reporter=lcov"
